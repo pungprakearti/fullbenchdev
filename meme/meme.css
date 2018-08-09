@@ -1,0 +1,104 @@
+header {
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+div.memeFormContainer {
+  width: 600px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  /* border: 5px solid; */
+}
+
+ul.newMemeForm {
+  width: 520px;
+  /* border: 5px solid; */
+}
+
+ul.newMemeForm > li {
+  font-family: 'Teko', sans-serif;
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: right;
+}
+
+input[type='text'],
+input[type='URL'] {
+  width: 400px;
+  border-radius: 5px;
+}
+
+input[type='submit'] {
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+div.selectableImages {
+  display: flex;
+  justify-content: space-around;
+  width: 600px;
+  margin: 0 auto;
+  /* border: 5px solid; */
+}
+
+img.selectableImages {
+  max-width: 100px;
+  max-height: 100px;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+div.completedMemeContainer {
+  text-align: center;
+  width: 800px;
+  margin: 0 auto;
+  /* border: 5px solid; */
+}
+
+img.meme {
+  max-width: 500px;
+  max-height: 500px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+}
+
+.image {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  /* border: 5px solid; */
+}
+
+h1 {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 45px;
+  line-height: 80%;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  position: absolute;
+  top: -15px;
+  width: 100%;
+}
+
+h2 {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 45px;
+  line-height: 80%;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+}
