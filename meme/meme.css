@@ -65,13 +65,15 @@ img.meme {
   border-radius: 15px;
 }
 
-.image {
+.memeWrapper {
   position: relative;
   width: 500px;
   margin: 0 auto;
   text-align: center;
+}
+
+.memeWrapper .image {
   transition: opacity 0.15s ease-out;
-  /* border: 5px solid; */
 }
 
 h1 {
@@ -98,31 +100,30 @@ h2 {
   width: 100%;
 }
 
-p.hidden {
+.memeWrapper .hidden {
   font-family: 'Teko', sans-serif;
   text-transform: uppercase;
-  font-size: 200px;
-  line-height: 0%;
-  color: red;
+  font-size: 100px;
+  line-height: 100%;
+  color: rgb(196, 22, 22);
   position: absolute;
-  top: -25px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  /* transition: opacity 0.15s, visibility 0.15s ease-out; */
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s, visibility 0.15s ease-out;
+  /* border: 5px solid; */
 }
 
-.image:hover {
+.memeWrapper:hover .image {
   opacity: 0.25;
 }
 
-.hidden:hover {
+.memeWrapper:hover .hidden {
   visibility: visible;
   opacity: 1;
 }
-
-/* need to make another div to hide the X and show it
-https://stackoverflow.com/questions/14263594/how-to-show-text-on-image-when-hovering*/

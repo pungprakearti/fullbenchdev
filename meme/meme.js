@@ -14,6 +14,7 @@ window.onload = function() {
 
   //meme container
   var divMemeContainer = document.querySelector('.completedMemeContainer');
+  var imageContainer = document.querySelector('.image');
 
   //selectable image selection
   var memeChoice = document.querySelector('.selectableImages');
@@ -29,9 +30,12 @@ window.onload = function() {
       window.alert('Please enter a URL in the "IMAGE LINK" box');
     } else {
       //create meme
+      var createDivWrapper = document.createElement('div');
+      createDivWrapper.setAttribute('class', 'memeWrapper');
+      console.log(createDivWrapper);
+
       var createDiv = document.createElement('div');
       createDiv.setAttribute('class', 'image');
-      createDiv.setAttribute('border', '5px');
 
       var createImg = document.createElement('img');
       createImg.setAttribute('src', url.value);
@@ -43,11 +47,17 @@ window.onload = function() {
       var createH2 = document.createElement('h2');
       createH2.textContent = formBottomText.value;
 
+      // var createP = document.createElement('p');
+      // createP.setAttribute('class', 'hidden');
+      // createP.textContent = 'X';
+
       // append meme
-      divMemeContainer.appendChild(createDiv);
+      divMemeContainer.appendChild(createDivWrapper);
+      createDivWrapper.appendChild(createDiv);
       createDiv.appendChild(createImg);
       createDiv.appendChild(createH1);
       createDiv.appendChild(createH2);
+      // createDivWrapper.appendChild(createP);
     }
 
     //clear form
@@ -55,5 +65,8 @@ window.onload = function() {
   });
 
   //deletion
-  divMemeContainer.addEventListener;
+  divMemeContainer.addEventListener('click', function(event) {
+    imageContainer.removeChild(event.target);
+    console.log(event.target);
+  });
 };
