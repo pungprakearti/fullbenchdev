@@ -64,8 +64,11 @@ window.onload = function() {
 
   //deletion
   divMemeContainer.addEventListener('click', function(event) {
-    event.target.parentElement.parentElement.removeChild(
-      event.target.parentElement
-    );
+    // had to add this if statement because a misclick would delete site
+    if (event.target !== document.querySelector('.completedMemeContainer')) {
+      event.target.parentElement.parentElement.removeChild(
+        event.target.parentElement
+      );
+    }
   });
 };
