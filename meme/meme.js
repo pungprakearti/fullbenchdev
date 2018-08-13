@@ -45,9 +45,9 @@ window.onload = function() {
       var createH2 = document.createElement('h2');
       createH2.textContent = formBottomText.value;
 
-      var createP = document.createElement('p');
-      createP.setAttribute('class', 'hidden');
-      createP.textContent = 'X';
+      var createSpan = document.createElement('span');
+      createSpan.setAttribute('class', 'hidden');
+      createSpan.textContent = 'X';
 
       // append meme
       divMemeContainer.appendChild(createDivWrapper);
@@ -55,7 +55,7 @@ window.onload = function() {
       createDiv.appendChild(createImg);
       createDiv.appendChild(createH1);
       createDiv.appendChild(createH2);
-      createDivWrapper.appendChild(createP);
+      createDivWrapper.appendChild(createSpan);
     }
 
     //clear form

@@ -116,6 +116,9 @@ h2 {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.15s, visibility 0.15s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   /* border: 5px solid; */
 }
 
