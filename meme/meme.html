@@ -9,31 +9,33 @@
   <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
 </head>
 <body>
-  <header>Meme Generator</header>
+  <div class="genContainer">
+    <header>Meme Generator</header>
 
-  <div class="memeFormContainer">
-    <form action="#" id="newMemeForm">
-      <ul class="newMemeForm">
-        <li><label for="imageURL">Image Link: </label>
-        <input type="url" name="imageURL" id="imageURL"></li>
-        <li><label for="topText">Top Text: </label>
-        <input type="text" name="topText" id="topText"></li>
-        <li><label for="bottomText">Bottom Text: </label>
-        <input type="text" name="bottom_text" id="bottomText"></li>
-      </ul>
-      <input type="submit" value="MEME ME!">
-    </form>
-  </div>
+    <div class="memeFormContainer">
+      <form action="#" id="newMemeForm">
+        <ul class="newMemeForm">
+          <li><label for="imageURL">Image Link: </label>
+          <input type="url" name="imageURL" id="imageURL"></li>
+          <li><label for="topText">Top Text: </label>
+          <input type="text" name="topText" id="topText"></li>
+          <li><label for="bottomText">Bottom Text: </label>
+          <input type="text" name="bottom_text" id="bottomText"></li>
+        </ul>
+        <input type="submit" value="MEME ME!">
+      </form>
+    </div>
 
-  <!-- selectable images -->
-  <div class="selectableImages">
-    <span class="selectableImages">
-      <img src="https://imgflip.com/s/meme/The-Most-Interesting-Man-In-The-World.jpg" class="selectableImages">
-      <img src="https://memegenerator.net/img/images/16903555.jpg" class="selectableImages">
-      <img src="https://i.imgflip.com/1rzy4a.jpg" class="selectableImages">
-      <img src="https://imgflip.com/s/meme/One-Does-Not-Simply.jpg" class="selectableImages">
-      <img src="https://imgflip.com/s/meme/Success-Kid.jpg" class="selectableImages">
-    </span>
+    <!-- selectable images -->
+    <div class="selectableImages">
+      <span class="selectableImages">
+        <img src="https://imgflip.com/s/meme/The-Most-Interesting-Man-In-The-World.jpg" class="selectableImages">
+        <img src="https://memegenerator.net/img/images/16903555.jpg" class="selectableImages">
+        <img src="https://i.imgflip.com/1rzy4a.jpg" class="selectableImages">
+        <img src="https://imgflip.com/s/meme/One-Does-Not-Simply.jpg" class="selectableImages">
+        <img src="https://imgflip.com/s/meme/Success-Kid.jpg" class="selectableImages">
+      </span>
+    </div>
   </div>
 
   <div class="completedMemeContainer">
