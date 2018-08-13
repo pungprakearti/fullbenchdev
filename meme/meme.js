@@ -14,7 +14,6 @@ window.onload = function() {
 
   //meme container
   var divMemeContainer = document.querySelector('.completedMemeContainer');
-  var imageContainer = document.querySelector('.image');
 
   //selectable image selection
   var memeChoice = document.querySelector('.selectableImages');
@@ -32,7 +31,6 @@ window.onload = function() {
       //create meme
       var createDivWrapper = document.createElement('div');
       createDivWrapper.setAttribute('class', 'memeWrapper');
-      console.log(createDivWrapper);
 
       var createDiv = document.createElement('div');
       createDiv.setAttribute('class', 'image');
@@ -47,9 +45,9 @@ window.onload = function() {
       var createH2 = document.createElement('h2');
       createH2.textContent = formBottomText.value;
 
-      // var createP = document.createElement('p');
-      // createP.setAttribute('class', 'hidden');
-      // createP.textContent = 'X';
+      var createP = document.createElement('p');
+      createP.setAttribute('class', 'hidden');
+      createP.textContent = 'X';
 
       // append meme
       divMemeContainer.appendChild(createDivWrapper);
@@ -57,7 +55,7 @@ window.onload = function() {
       createDiv.appendChild(createImg);
       createDiv.appendChild(createH1);
       createDiv.appendChild(createH2);
-      // createDivWrapper.appendChild(createP);
+      createDivWrapper.appendChild(createP);
     }
 
     //clear form
@@ -66,7 +64,8 @@ window.onload = function() {
 
   //deletion
   divMemeContainer.addEventListener('click', function(event) {
-    imageContainer.removeChild(event.target);
-    console.log(event.target);
+    event.target.parentElement.parentElement.removeChild(
+      event.target.parentElement
+    );
   });
 };
