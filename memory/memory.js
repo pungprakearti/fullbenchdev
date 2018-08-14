@@ -70,19 +70,21 @@ window.onload = function() {
   //select first image
   var cardsContainer = document.querySelector('.cardsContainer');
   cardsContainer.addEventListener('click', function(event) {
-    //select first image
-    if (selected1 === undefined) {
-      selected1 = event.target.parentElement.lastChild;
-      console.log(selected1);
-      showImage(event);
-    }
-
-    //select second image
-    if (selected1 !== undefined && selected2 === undefined) {
-      if (selected1 !== event.target.parentElement.lastChild) {
-        selected2 = event.target.parentElement.lastChild;
-        console.log(selected2);
+    if (event.target !== undefined) {
+      //select first image
+      if (selected1 === undefined) {
+        selected1 = event.target.parentElement.lastChild;
+        console.log(selected1);
         showImage(event);
+      }
+
+      //select second image
+      if (selected1 !== undefined && selected2 === undefined) {
+        if (selected1 !== event.target.parentElement.lastChild) {
+          selected2 = event.target.parentElement.lastChild;
+          console.log(selected2);
+          showImage(event);
+        }
       }
     }
 
