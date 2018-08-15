@@ -37,7 +37,7 @@ window.onload = function() {
   //set high score
   var highScore = localStorage.getItem('highScore');
   var updateHS = document.querySelector('.highScore');
-  if (highScore === 'null') {
+  if (highScore === null) {
     highScore = +Infinity;
     updateHS.innerText = '0';
   } else {
