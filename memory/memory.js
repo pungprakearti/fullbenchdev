@@ -32,6 +32,17 @@ window.onload = function() {
     'images/bb15.jpg'
   ];
   var match = 0;
+  var score = 0;
+
+  //set high score
+  var highScore = localStorage.getItem('highScore');
+  var updateHS = document.querySelector('.highScore');
+  if (highScore === 'null') {
+    highScore = +Infinity;
+    updateHS.innerText = '0';
+  } else {
+    updateHS.innerText = highScore;
+  }
 
   function shuffle(a) {
     var j, x, i;
@@ -54,6 +65,11 @@ window.onload = function() {
       s.parentElement.lastChild.style.visibility = 'visible';
       s.parentElement.lastChild.style.transform = 'scale(1.5)';
       s.parentElement.lastChild.style.zIndex = num;
+
+      //add to score
+      score++;
+      sb = document.querySelector('.currentScore');
+      sb.innerText = score;
     }
   }
 
@@ -75,6 +91,29 @@ window.onload = function() {
     }
   }
 
+  function showComplete() {
+    var complete = document.querySelector('.complete');
+    complete.style.visibility = 'visible';
+    complete.style.opacity = 1;
+    complete.style.fontSize = '100px';
+
+    var reload = document.querySelector('.reload');
+    reload.style.visibility = 'visible';
+    reload.style.opacity = 1;
+    reload.style.fontSize = '40px';
+
+    reload.onclick = function() {
+      location.reload();
+    };
+  }
+
+  function changeHS() {
+    if (highScore > score) {
+      localStorage.setItem('highScore', score);
+      updateHS.innerText = score;
+    }
+  }
+
   function hideAll() {
     let imgArr = document.querySelectorAll('img');
     for (let item of imgArr) {
@@ -92,8 +131,10 @@ window.onload = function() {
 
     //win
     if (match >= 15) {
-      console.log('working here');
-      alert('WINNER!');
+      showComplete();
+
+      //change high score
+      changeHS();
     }
   }
 
