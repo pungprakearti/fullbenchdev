@@ -31,8 +31,19 @@ window.onload = function() {
     'images/bb15.jpg',
     'images/bb15.jpg'
   ];
+  var match = 0;
+  var score = 0;
 
-  //shuffle array
+  //set high score
+  var highScore = localStorage.getItem('highScore');
+  var updateHS = document.querySelector('.highScore');
+  if (highScore === null) {
+    highScore = +Infinity;
+    updateHS.innerText = '0';
+  } else {
+    updateHS.innerText = highScore;
+  }
+
   function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -44,115 +55,148 @@ window.onload = function() {
     return a;
   }
 
-  shuffle(deckArr);
-
-  //create cards
-  for (let image of deckArr) {
-    var divCard = document.createElement('div');
-    divCard.setAttribute('class', 'card');
-
-    var divCardBack = document.createElement('div');
-    divCardBack.setAttribute('class', 'cardBack');
-    divCardBack.textContent = '88';
-
-    var img = document.createElement('img');
-    img.setAttribute('src', image);
-
-    //append
-    var cardsContainer = document.querySelector('.cardsContainer');
-    cardsContainer.appendChild(divCard);
-    divCard.appendChild(divCardBack);
-    divCard.appendChild(img);
-  }
-
-  var selected1, selected2;
-
-  //select first image
-  var cardsContainer = document.querySelector('.cardsContainer');
-  cardsContainer.addEventListener('click', function(event) {
-    if (event.target !== undefined) {
-      //select first image
-      if (selected1 === undefined) {
-        selected1 = event.target.parentElement.lastChild;
-        console.log(selected1);
-        showImage(event);
-      }
-
-      //select second image
-      if (selected1 !== undefined && selected2 === undefined) {
-        if (selected1 !== event.target.parentElement.lastChild) {
-          selected2 = event.target.parentElement.lastChild;
-          console.log(selected2);
-          showImage(event);
-        }
-      }
-    }
-
-    //delay
-  });
-
-  function showImage(event) {
+  function showImage(s, num) {
     //cardBack to 0 opacity
-    event.target.parentElement.firstChild.style.opacity = 0;
+    if (s !== undefined) {
+      s.parentElement.firstChild.style.opacity = 0;
 
-    //img to 1 opacity, visible transform scale(1.5) and z-index 5
-    event.target.parentElement.lastChild.style.opacity = 1;
-    event.target.parentElement.lastChild.style.visibility = 'visible';
-    event.target.parentElement.lastChild.style.transform = 'scale(1.5)';
-    event.target.parentElement.lastChild.style.zIndex = 5;
-    console.log('showed image');
+      //img to 1 opacity, visible transform scale(1.5) and z-index 5
+      s.parentElement.lastChild.style.opacity = 1;
+      s.parentElement.lastChild.style.visibility = 'visible';
+      s.parentElement.lastChild.style.transform = 'scale(1.5)';
+      s.parentElement.lastChild.style.zIndex = num;
+
+      //add to score
+      score++;
+      sb = document.querySelector('.currentScore');
+      sb.innerText = score;
+    }
   }
 
-  function hideImagesShowCardBack(event) {
+  function showCardBack() {
     let imgArr = document.querySelectorAll('img');
     for (let item of imgArr) {
-      if (item.style.zIndex == 5) {
+      if (item.style.zIndex >= 5) {
         // hide image
-        event.target.parentElement.lastChild.style.opacity = 0;
-        event.target.parentElement.lastChild.style.visibility = 'hidden';
-        event.target.parentElement.lastChild.style.transform = 'scale(1)';
-        event.target.parentElement.lastChild.style.zIndex = 1;
+        item.style.opacity = 0;
+        item.style.visibility = 'hidden';
+        item.style.transform = 'scale(1)';
+        item.style.zIndex = 1;
 
         // show card back
-        event.target.parentElement.firstChild.style.opacity = 1;
-        console.log('hide images');
+        item.parentElement.firstChild.style.opacity = 1;
+
+        clearSelected();
       }
     }
   }
 
-  function hideAll(event) {
+  function showComplete() {
+    var complete = document.querySelector('.complete');
+    complete.style.visibility = 'visible';
+    complete.style.opacity = 1;
+    complete.style.fontSize = '100px';
+
+    var reload = document.querySelector('.reload');
+    reload.style.visibility = 'visible';
+    reload.style.opacity = 1;
+    reload.style.fontSize = '40px';
+
+    reload.onclick = function() {
+      location.reload();
+    };
+  }
+
+  function changeHS() {
+    if (highScore > score) {
+      localStorage.setItem('highScore', score);
+      updateHS.innerText = score;
+    }
+  }
+
+  function hideAll() {
     let imgArr = document.querySelectorAll('img');
     for (let item of imgArr) {
-      if (item.style.zIndex == 5) {
+      if (item.style.zIndex >= 5) {
         // hide image
-        event.target.parentElement.lastChild.style.visibility = 'hidden';
-
+        item.style.visibility = 'hidden';
         // hide card back
-        event.target.parentElement.firstChild.style.visibility = 'hidden';
-        console.log('hide images and hide card back');
+        item.parentElement.firstChild.style.visibility = 'hidden';
       }
     }
+    //increment matches
+    match++;
+
+    clearSelected();
+
+    //win
+    if (match >= 15) {
+      showComplete();
+
+      //change high score
+      changeHS();
+    }
   }
+
+  function clearSelected() {
+    setTimeout(function() {
+      selected1 = undefined;
+      selected2 = undefined;
+    }, 100);
+  }
+
+  function createCards() {
+    for (let image of deckArr) {
+      var divCard = document.createElement('div');
+      divCard.setAttribute('class', 'card');
+
+      var divCardBack = document.createElement('div');
+      divCardBack.setAttribute('class', 'cardBack');
+      divCardBack.textContent = '88';
+
+      var img = document.createElement('img');
+      img.setAttribute('src', image);
+
+      //append
+      var cardsContainer = document.querySelector('.cardsContainer');
+      cardsContainer.appendChild(divCard);
+      divCard.appendChild(divCardBack);
+      divCard.appendChild(img);
+    }
+  }
+
+  shuffle(deckArr);
+  createCards();
+  var selected1, selected2;
+
+  click = document.querySelector('.cardsContainer');
+  click.onclick = function() {
+    //select 1
+    if (selected1 === undefined) {
+      selected1 = event.target.parentElement.lastChild;
+      try {
+        showImage(selected1, 5);
+      } catch {}
+    }
+
+    //select 2
+    if (
+      selected1 !== undefined &&
+      selected2 === undefined &&
+      event.target.parentElement.lastChild !== selected1
+    ) {
+      selected2 = event.target.parentElement.lastChild;
+      showImage(selected2, 6);
+    }
+
+    //match
+    if (selected1 !== undefined && selected2 !== undefined) {
+      if (selected1.src === selected2.src) {
+        setTimeout(hideAll, 500);
+      } else {
+        //no match
+        setTimeout(showCardBack, 500);
+      }
+    }
+  };
 };
-
-// if selected1 = -1
-// if querySelector = cardback
-// selected1 = querySelector
-//scale image hide cardback
-
-//if selected2 = -1
-// if querySelector = cardback
-//selected2 = querySelector
-//scale image hide cardback
-
-//delay
-
-//MATCH
-//if selected1 = selected2
-//match++
-//if match >= 15 game over
-//else hide images
-
-//MISS
-//selected1 and selected2 = -1;
-// shrink and hide images, unhind cardback
