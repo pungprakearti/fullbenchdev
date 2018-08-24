@@ -1,8 +1,28 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: black;
+}
+
 .bgContainer {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  border: 5px solid red;
 }
 
 .bgBack {
   background: url(ice_texture.jpg);
+  background-size: 25%;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 5px solid blue;
+  opacity: 0.25;
+}
+
+.bgMiddle {
 }
