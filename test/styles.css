@@ -66,6 +66,8 @@ body {
   z-index: 10;
   position: relative;
   top: 240px;
+  /* position: fixed; */
+  /* top: 0; */
 }
 
 .sticky {
