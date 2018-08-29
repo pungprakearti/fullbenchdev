@@ -7,7 +7,7 @@ body {
   background-color: rgb(52, 89, 98);
 }
 
-.bgContainer {
+.container {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -36,53 +36,48 @@ body {
 
 .bgFront {
   height: 240px;
-  width: 800px;
-  min-width: 800px;
+  max-width: 800px;
+  min-width: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: white;
   -webkit-text-stroke: 4px rgb(32, 69, 78);
   font-weight: bold;
   font-size: 75px;
   transform: translateZ(0);
   margin: 0 auto;
-  /* border: 5px solid red; */
 }
 
 .navBar {
-  width: 800px;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   color: white;
   font-size: 25px;
+  max-width: 800px;
+  min-width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: black;
   border-radius: 5px;
-  /* border: 5px solid green; */
   margin: 0 auto;
   z-index: 10;
-  position: relative;
-  top: 240px;
-  /* position: fixed; */
-  /* top: 0; */
-}
-
-.sticky {
-  position: fixed;
+  /* position: relative; */
+  /* top: 240px; */
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 2.5px 5px rgb(22, 59, 68);
 }
 
 .main {
-  width: 800px;
-  min-width: 800px;
+  max-width: 800px;
+  min-width: 600px;
   height: 100%;
   background-color: white;
   display: flex;
-  /* justify-content: center; */
-  /* font-family: 'Montserrat', sans-serif; */
   font-size: 50px;
   position: relative;
   top: 270px;
