@@ -1,91 +1,234 @@
-body {
-  font-family: 'Questrial', sans-serif;
-  color: #fffad5;
-  background-color: #105b63;
+html {
   height: 100%;
-  margin: auto;
 }
 
-nav {
-  background: #bd4932;
-  list-style: none;
-  width: 100%;
-  padding: 1px 1px;
-  font-size: 24px;
-  text-transform: uppercase;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-}
-
-a {
-  transition: color 0.5s ease-out;
-}
-
-a:link,
-a:visited,
-a:active {
-  color: #fffad5;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #0d4658;
+body {
+  height: 100%;
+  background-color: rgb(52, 89, 98);
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  list-style: none;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
 }
 
-main {
+.parallax {
   position: absolute;
   top: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
-section {
-  width: 700px;
-  height: 500px;
-  color: #105b73;
-  font-size: 40px;
+.bgBack {
+  background: url(misfits.jpg);
+  height: 1500px;
+  transform: translateZ(-5px) scale(6) translateY(-200px);
+  opacity: 0.5;
+  z-index: -5;
+}
+
+.bgFront {
+  height: 240px;
+  max-width: 800px;
+  min-width: 600px;
   display: flex;
-  align-self: center;
   justify-content: center;
-  padding: 50px;
+  align-items: center;
+  text-align: center;
+  color: white;
+  -webkit-text-stroke: 2px rgb(32, 69, 78);
+  font-weight: bold;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgb(22, 59, 68);
+  margin: 0 auto;
+  top: 50px;
+}
+
+.dev {
+  height: auto;
+  max-width: 800px;
+  min-width: 600px;
+  color: orangered;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  top: 220px;
+  left: 0;
+  right: 0;
+  text-shadow: 1px 1px 2px rgb(22, 59, 68);
+}
+
+.navBar {
+  color: white;
+  text-transform: uppercase;
+  font-size: 25px;
+  max-width: 800px;
+  min-width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  border-radius: 5px;
+  margin: 0 auto;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 2.5px 5px rgb(22, 59, 68);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.home,
+.about,
+.resume,
+.projects,
+.contact,
+.toTop,
+.links {
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.25s ease-out;
+  color: white;
+}
+
+.home {
+  background-color: orangered;
+}
+
+.about:hover,
+.resume:hover,
+.projects:hover,
+.contact:hover,
+.toTop:hover,
+.links:hover {
+  background-color: orange;
+}
+
+.center {
+  text-align: center;
+}
+
+.links {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.main {
+  max-width: 800px;
+  min-width: 600px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  position: relative;
+  top: 295px;
+  margin: 0 auto;
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 0px 2.5px 5px rgb(22, 59, 68);
+}
+
+.content {
+  padding: 20px;
+  padding-bottom: 40px;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2.5px 5px rgb(22, 59, 68);
+}
+
+.header {
+  text-transform: uppercase;
+  text-align: center;
+  color: orange;
+  padding-bottom: 20px;
 }
 
 #home,
-#contact {
-  background-color: #fffad5;
-  padding-top: 100px;
-}
-
-#about {
-  background-color: #ebe6c4;
-  padding-top: 100px;
-}
-
-#empty {
-  background-color: #fffad5;
-}
-
 #resume {
-  color: #0d4658;
-  text-decoration: none;
+  background-color: rgba(92, 129, 138, 0.85);
+  color: white;
 }
 
-footer {
-  background: #db9e36;
-  list-style: none;
-  width: 100%;
+.homePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 2.5px 5px rgb(22, 59, 68);
+}
+
+.resumeContainer {
+  width: auto;
+}
+
+.resumeHeader {
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.resumeJob {
+  width: auto;
+  padding-top: 45px;
   font-size: 20px;
-  position: fixed;
-  bottom: 0;
-  padding-top: 10px;
+}
+
+.resumeTop {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 10px;
+}
+
+.resumeCompany,
+.resumeDates {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.resumeCompany {
+  text-transform: uppercase;
+}
+
+#about,
+#projects {
+  background-color: rgba(132, 169, 178, 0.85);
+  color: white;
+}
+
+#contact {
+  background-color: rgba(255, 69, 0, 0.85);
+  color: white;
+}
+
+.smIcons {
+  width: 50px;
+  height: auto;
+  padding: 5px;
+}
+
+.toTop {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
 }
